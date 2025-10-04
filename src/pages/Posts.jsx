@@ -1,0 +1,76 @@
+import { useEffect, useState } from "react";
+import api from "../api";
+import { useNavigate, Link } from "react-router-dom";
+import PostForm from "../components/PostForm";
+
+export default function Posts() {
+  const [posts, setPosts] = useState([]);
+  const navigate = useNavigate();
+
+  const fetchPosts = async () => {
+    const res = await api.get("/posts");
+    setPosts(res.data);
+  };
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
+  const createPost = async (data) => {
+    await api.post("/posts", data);
+    fetchPosts();
+  };
+
+  const deletePost = async (id) => {
+    await api.delete(`/posts/${id}`);
+    fetchPosts();
+  };
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-100 p-6">
+      <div className="max-w-sm md:max-w-md lg:max-w-lg mx-auto bg-white p-6 rounded shadow">
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-xl font-bold">My Posts</h2>
+          <button
+            onClick={logout}
+            className="bg-red-500 text-white p-1 rounded hover:bg-red-600"
+          >
+            Logout
+          </button>
+        </div>
+        <PostForm onSubmit={createPost} />
+        <ul className="space-y-2">
+          {posts.map((p) => (
+            <li
+              key={p._id}
+              className="border p-2 rounded flex justify-between items-center"
+            >
+              <div>
+                <strong>{p.title}</strong> - {p.content}
+              </div>
+              <div className="flex gap-2">
+                <Link
+                  to={`/posts/${p._id}/edit`}
+                  className="bg-yellow-500 text-white p-1 rounded hover:bg-yellow-600"
+                >
+                  Edit
+                </Link>
+                <button
+                  onClick={() => deletePost(p._id)}
+                  className="bg-red-500 text-white p-1 rounded hover:bg-red-600"
+                >
+                  Delete
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
