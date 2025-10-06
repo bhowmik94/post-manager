@@ -1,11 +1,11 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import Posts from '../pages/Posts';
 import api from '../api';
 import { MemoryRouter } from 'react-router-dom';
 
-vi.mock('../api');
+vi.mock('axios');
 
 const mockPosts = [
   { _id: '1', title: 'Post 1', content: 'Content 1' },

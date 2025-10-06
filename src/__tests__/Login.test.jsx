@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import Login from '../pages/Login';
 import api from '../api';
 import { MemoryRouter } from 'react-router-dom';
 
-vi.mock('../api');
+vi.mock('axios');
 
 describe('Login Page', () => {
   it('renders login form', () => {
