@@ -5,7 +5,15 @@ import Login from '../pages/Login';
 import api from '../api';
 import { MemoryRouter } from 'react-router-dom';
 
-vi.mock('axios');
+// MOCK the functions inside the api module directly
+vi.mock('../api', () => {
+  return {
+    get: vi.fn(),
+    post: vi.fn(),
+    put: vi.fn(),
+    delete: vi.fn(),
+  };
+});
 
 describe('Login Page', () => {
   it('renders login form', () => {
