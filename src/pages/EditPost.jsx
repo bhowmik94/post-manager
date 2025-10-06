@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import api from "../api";
 import PostForm from "../components/PostForm";
+import Layout from "../components/Layout";
 
 export default function EditPost() {
   const { id } = useParams();
@@ -26,17 +27,19 @@ export default function EditPost() {
   if (!postData) return <p>Loading...</p>;
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-6 rounded shadow w-full max-w-sm">
-        <h2 className="text-xl font-bold mb-4">Edit Post</h2>
-        <PostForm onSubmit={updatePost} initialData={postData} />
-        <button
-          onClick={() => navigate("/posts")}
-          className="mt-2 text-blue-500 hover:underline"
-        >
-          Cancel
-        </button>
+    <Layout>
+      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <div className="bg-white p-6 rounded shadow w-full max-w-sm">
+          <h2 className="text-xl font-bold mb-4">Edit Post</h2>
+          <PostForm onSubmit={updatePost} initialData={postData} />
+          <button
+            onClick={() => navigate("/posts")}
+            className="mt-2 text-blue-500 hover:underline"
+          >
+            Cancel
+          </button>
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 }
