@@ -15,5 +15,6 @@ export default defineConfig({
     threads: false,
     isolate: false,
     reporters: "verbose",
+    include: ["src/__tests__/**/*.test.{js,jsx,ts,tsx}"],
   },
 });
