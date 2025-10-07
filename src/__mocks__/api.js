@@ -1,6 +1,6 @@
 import { vi } from 'vitest';
 
-export default {
+export const api = {
   post: vi.fn(),
   get: vi.fn(),
   put: vi.fn(),
