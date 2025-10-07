@@ -12,5 +12,7 @@ export default defineConfig({
     mockReset: true,
     restoreMocks: true,
     clearMocks: true,
+    threads: false,
+    reporters: "verbose",
   },
 });
