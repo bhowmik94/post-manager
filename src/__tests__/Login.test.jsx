@@ -4,20 +4,8 @@ import { describe, it, expect, vi } from 'vitest';
 import Login from '../pages/Login';
 import { MemoryRouter } from "react-router-dom";
 
-// MOCK api BEFORE importing it
-vi.mock("axios", () => {
-  const mockAxios = {
-    create: vi.fn(() => mockAxios),
-    get: vi.fn(),
-    post: vi.fn(),
-    put: vi.fn(),
-    delete: vi.fn(),
-    interceptors: { request: { use: vi.fn() } },
-  };
-  return { default: mockAxios };
-});
 
-// Now import AFTER the mock
+vi.mock("../api");
 import api from "../api";
 
 describe('Login Page', () => {

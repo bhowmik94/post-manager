@@ -5,4 +5,5 @@ export default {
   get: vi.fn(),
   put: vi.fn(),
   delete: vi.fn(),
+  interceptors: { request: { use: vi.fn() } },
 };
