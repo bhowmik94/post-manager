@@ -7,8 +7,6 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import AuthRoute from "./routes/AuthRoute";
 
 function App() {
-  const token = localStorage.getItem("token");
-
   return (
     <BrowserRouter>
       <Routes>

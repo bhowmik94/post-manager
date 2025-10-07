@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import api from "../api";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import PostForm from "../components/PostForm";
 import Layout from "../components/Layout";
 
 export default function Posts() {
   const [posts, setPosts] = useState([]);
-  const navigate = useNavigate();
 
   const fetchPosts = async () => {
     const res = await api.get("/posts");

@@ -17,7 +17,7 @@ export default function EditPost() {
       else setPostData(post);
     };
     fetchPost();
-  }, [id]);
+  }, [id, navigate]);
 
   const updatePost = async (data) => {
     await api.put(`/posts/${id}`, data);
