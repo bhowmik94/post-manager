@@ -1,5 +1,5 @@
 
-vi.mock("../api", () => ({
+vi.mock("src/api", () => ({
   default: {
     post: vi.fn(),
     get: vi.fn(),
@@ -16,7 +16,7 @@ import Login from '../pages/Login';
 import { MemoryRouter } from "react-router-dom";
 
 
-import api from "../api";
+import api from "src/api";
 
 describe("api mock", () => {
   it("should be mocked", () => {
