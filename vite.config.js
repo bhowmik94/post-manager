@@ -12,5 +12,8 @@ export default defineConfig({
     mockReset: true,
     restoreMocks: true,
     clearMocks: true,
+    deps: {
+      inline: ["axios"],
+    },
   },
 });
