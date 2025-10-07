@@ -23,4 +23,8 @@ jobs:
         run: npm install
 
       - name: Run Vitest
+        env:
+          NODE_ENV: test
+          # Add any other required environment variables here, e.g.:
+          # API_URL: http://localhost
         run: npm test
