@@ -5,7 +5,15 @@ import Login from '../pages/Login';
 import { MemoryRouter } from "react-router-dom";
 
 
-vi.mock("../api");
+vi.mock("../api", () => ({
+  default: {
+    post: vi.fn(),
+    get: vi.fn(),
+    put: vi.fn(),
+    delete: vi.fn(),
+    interceptors: { request: { use: vi.fn() } },
+  }
+}));
 import api from "../api";
 
 describe('Login Page', () => {
