@@ -1,12 +1,14 @@
 
-vi.mock("../api", () => ({
-  default: {
-    post: vi.fn(),
-    get: vi.fn(),
-    put: vi.fn(),
-    delete: vi.fn(),
-    interceptors: { request: { use: vi.fn() } },
-  }
+vi.mock("axios", () => ({
+default: {
+    create: () => ({
+      post: vi.fn(),
+      get: vi.fn(),
+      put: vi.fn(),
+      delete: vi.fn(),
+      interceptors: { request: { use: vi.fn() } },
+    }),
+  },
 }));
 
 import { render, screen } from '@testing-library/react';
