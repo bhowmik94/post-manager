@@ -23,4 +23,4 @@ jobs:
         run: npm install
 
       - name: Run Vitest
-        run: npx vitest run --pool=threads --single-thread --reporter=verbose
+        run: npx vitest run --pool=vm --reporter=verbose
