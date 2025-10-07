@@ -1,9 +1,3 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { describe, it, expect, vi } from 'vitest';
-import Login from '../pages/Login';
-import { MemoryRouter } from "react-router-dom";
-
 
 vi.mock("../api", () => ({
   default: {
@@ -14,6 +8,14 @@ vi.mock("../api", () => ({
     interceptors: { request: { use: vi.fn() } },
   }
 }));
+
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { describe, it, expect, vi } from 'vitest';
+import Login from '../pages/Login';
+import { MemoryRouter } from "react-router-dom";
+
+
 import api from "../api";
 
 describe('Login Page', () => {
