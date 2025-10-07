@@ -2,19 +2,22 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi } from 'vitest';
 import Signup from '../pages/Signup';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from "react-router-dom";
 
-// MOCK the functions inside the api module directly
-vi.mock('../api', () => {
+// MOCK api BEFORE importing it
+vi.mock("../api", () => {
   return {
-    get: vi.fn(),
-    post: vi.fn(),
-    put: vi.fn(),
-    delete: vi.fn(),
+    default: {
+      get: vi.fn(),
+      post: vi.fn(),
+      put: vi.fn(),
+      delete: vi.fn(),
+    },
   };
 });
 
-import api from '../api';
+// Now import AFTER the mock
+import api from "../api";
 
 describe('Signup Page', () => {
   it('renders signup form', () => {
