@@ -18,12 +18,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
-      - name: List src files for debugging
-        run: |
-          ls -R src
-          cat src/api.js
-          cat src/__mocks__/api.js
-
       - name: Install dependencies
         run: npm install
 
