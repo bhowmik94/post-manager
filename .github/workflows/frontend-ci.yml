@@ -22,6 +22,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install Vitest peer dependencies (jsdom)
+        run: npm install --save-dev jsdom
+
       - name: Run Vitest
         env:
           NODE_ENV: test
