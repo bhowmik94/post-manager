@@ -1,5 +1,5 @@
 
-vi.mock("../api", async () => ({
+vi.mock("../api", () => ({
   default: {
     post: vi.fn(),
     get: vi.fn(),
