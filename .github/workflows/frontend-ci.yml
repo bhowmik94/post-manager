@@ -18,16 +18,14 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
+      - name: List src files for debugging
+        run: |
+          ls -R src
+          cat src/api.js
+          cat src/__mocks__/api.js
 
       - name: Install dependencies
         run: npm install
 
-      - name: Install Vitest peer dependencies (jsdom)
-        run: npm install --save-dev jsdom
-
       - name: Run Vitest
-        env:
-          NODE_ENV: test
-          # Add any other required environment variables here, e.g.:
-          # API_URL: http://localhost
-        run: npm test
+        run: NODE_ENV=test npm test
