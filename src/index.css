@@ -1,4 +1,6 @@
 @import "tailwindcss";
 
-
-
+/* Global cursor pointer for all buttons (Tailwind doesn't do this by default) */
+button {
+  cursor: pointer;
+}

@@ -3,13 +3,22 @@ import api from "../api";
 import { Link } from "react-router-dom";
 import PostForm from "../components/PostForm";
 import Layout from "../components/Layout";
+import Loader from "../components/Loader";
 
 export default function Posts() {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const fetchPosts = async () => {
-    const res = await api.get("/posts");
-    setPosts(res.data);
+    setLoading(true);
+    try {
+      const res = await api.get("/posts");
+      setPosts(res.data);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -17,13 +26,23 @@ export default function Posts() {
   }, []);
 
   const createPost = async (data) => {
-    await api.post("/posts", data);
-    fetchPosts();
+    setLoading(true);
+    try {
+      await api.post("/posts", data);
+      fetchPosts();
+    } finally {
+      setLoading(false);
+    }
   };
 
   const deletePost = async (id) => {
-    await api.delete(`/posts/${id}`);
-    fetchPosts();
+    setLoading(true);
+    try {
+      await api.delete(`/posts/${id}`);
+      fetchPosts();
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
