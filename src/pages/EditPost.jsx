@@ -31,6 +31,8 @@ export default function EditPost() {
     navigate("/posts");
   };
 
+  if (!postData) return <Layout>{loading && <Loader />}</Layout>;
+
   return (
     <Layout>
       {loading && <Loader />}
