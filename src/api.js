@@ -12,12 +12,29 @@ api.interceptors.request.use((config) => {
 
 api.interceptors.response.use(
   (response) => response,
-  (error) => {
-    if (error.response && error.response.status === 401) {
-      // Token expired or invalid
-      localStorage.removeItem('token');
-      window.location.href = '/login'; // redirect to login
+  async (error) => {
+    const originalRequest = error.config;
+
+    // Handle access token expiry (401)
+    if (error.response && error.response.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+      try {
+        const res = await axios.post(
+          `${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/refresh`,
+          {},
+          { withCredentials: true }
+        );
+
+        const newToken = res.data.token;
+        localStorage.setItem('token', newToken);
+        originalRequest.headers.Authorization = `Bearer ${newToken}`;
+        return api(originalRequest); // retry original request
+      } catch (err) {
+        localStorage.removeItem('token');
+        window.location.href = '/login';
+      }
     }
+
     return Promise.reject(error);
   }
 );
