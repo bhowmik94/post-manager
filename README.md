@@ -1,16 +1,45 @@
-# React + Vite
+# Post Manager (JWT Authenticated CRUD App)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Frontend CI](https://github.com/bhowmik94/post-manager/actions/workflows/frontend-ci.yml/badge.svg)](https://github.com/bhowmik94/post-manager/actions/workflows/frontend-ci.yml)
 
-Currently, two official plugins are available:
+This is a JWT-authenticated CRUD app for managing posts/notes.  
+The frontend is built with React and Vite.  
+API calls are handled by a separate Node.js + MongoDB backend.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- User authentication with JWT
+- Create, read, update, and delete posts/notes
+- Responsive UI built with React
+- API integration with Node.js and MongoDB backend
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Getting Started
 
-## Expanding the ESLint configuration
+1. **Install dependencies:**
+   ```sh
+   npm install
+   ```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+2. **Run the development server:**
+   ```sh
+   npm run dev
+   ```
+
+3. **Run tests:**
+   ```sh
+   npm run test
+   ```
+
+## Project Structure
+
+- `src/` — React frontend code
+- `src/__tests__/` — Vitest test files
+- `.github/workflows/frontend-ci.yml` — GitHub Actions CI workflow
+
+## Backend
+
+The backend (Node.js + MongoDB) is in a separate repository and handles authentication and CRUD API endpoints.
+
+---
+
+**Feel free to fork or contribute!**
