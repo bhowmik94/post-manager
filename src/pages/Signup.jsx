@@ -7,7 +7,7 @@ export default function Signup() {
 
   const handleSignup = async (data) => {
     try {
-      const res = await api.post("/signup", data);
+      const res = await api.post("/auth/signup", data);
       localStorage.setItem("token", res.data.token);
       navigate("/posts");
     } catch (err) {
