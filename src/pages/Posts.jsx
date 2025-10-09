@@ -47,9 +47,9 @@ export default function Posts() {
 
   return (
     <Layout>
-      <div className="min-h-screen bg-gray-100 p-6">
+      <div className="min-h-screen bg-gray-200 p-6">
         <div className="max-w-sm md:max-w-md lg:max-w-lg mx-auto bg-white p-6 rounded shadow">
-          <div className="flex justify-between items-center mb-4">
+          <div className="flex justify-center items-center mb-4">
             <h2 className="text-xl font-bold">My Posts</h2>
           </div>
           <PostForm onSubmit={createPost} />
