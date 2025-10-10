@@ -63,6 +63,11 @@ export default function AuthForm({
       return;
     }
 
+    // remove username when logging in
+    if (!includeUsername) {
+      delete form.username;
+    }
+
     onSubmit(form);
   };
 
