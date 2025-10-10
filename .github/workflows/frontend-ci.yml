@@ -30,11 +30,11 @@ jobs:
         run: npm run build
 
       - name: Run Vitest (ignore CI-only failures)
-        run: npm run test || echo "Vitest failed in CI — continuing for demo"
+        run: npm run test
         env:
           CI: true
 
-      - name: Upload test summary (optional)
+      - name: Upload test summary
         if: always()
         run: |
           echo "### CI completed successfully" >> $GITHUB_STEP_SUMMARY
