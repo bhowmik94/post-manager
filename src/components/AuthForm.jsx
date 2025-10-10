@@ -76,7 +76,7 @@ export default function AuthForm({
       <div className="bg-white p-8 rounded-2xl shadow-md w-full max-w-sm md:max-w-md lg:max-w-lg">
         <h2 className="text-2xl font-semibold mb-6 text-center">{title}</h2>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col">
           {includeUsername && (
             <div className="mb-4">
               <input
