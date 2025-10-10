@@ -47,6 +47,7 @@ export default function Posts() {
 
   return (
     <Layout>
+      {loading && <Loader />}
       <div className="min-h-screen bg-gray-200 p-6">
         <div className="max-w-sm md:max-w-md lg:max-w-lg mx-auto bg-white p-6 rounded shadow">
           <div className="flex justify-center items-center mb-4">

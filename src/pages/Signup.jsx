@@ -11,7 +11,7 @@ export default function Signup() {
       localStorage.setItem("token", res.data.token);
       navigate("/posts");
     } catch (err) {
-      alert("Signup failed");
+      alert("Signup failed: ", err);
     }
   };
 

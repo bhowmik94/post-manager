@@ -11,7 +11,7 @@ export default function Login() {
       localStorage.setItem("token", res.data.token);
       navigate("/posts");
     } catch (err) {
-      alert("Login failed");
+      alert("Login failed: ", err);
     }
   };
 
