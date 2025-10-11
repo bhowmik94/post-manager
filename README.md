@@ -17,11 +17,13 @@ API calls are handled by a separate Node.js + MongoDB backend.
 ## Getting Started
 
 1. **Install dependencies:**
+
    ```sh
    npm install
    ```
 
 2. **Run the development server:**
+
    ```sh
    npm run dev
    ```

@@ -15,5 +15,12 @@ export default function Login() {
     }
   };
 
-  return <AuthForm title="Login" onSubmit={handleLogin} linkText="Go to Signup" linkTo="/signup" />;
+  return (
+    <AuthForm
+      title="Login"
+      onSubmit={handleLogin}
+      linkText="Go to Signup"
+      linkTo="/signup"
+    />
+  );
 }

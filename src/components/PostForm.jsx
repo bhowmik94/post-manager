@@ -1,9 +1,7 @@
 import { useState } from "react";
 
 export default function PostForm({ onSubmit, initialData }) {
-  const [post, setPost] = useState(
-    initialData || { title: "", content: "" }
-  );
+  const [post, setPost] = useState(initialData || { title: "", content: "" });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,10 +11,7 @@ export default function PostForm({ onSubmit, initialData }) {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="flex flex-col gap-2 mb-4"
-    >
+    <form onSubmit={handleSubmit} className="flex flex-col gap-2 mb-4">
       <input
         placeholder="Title"
         value={post.title}

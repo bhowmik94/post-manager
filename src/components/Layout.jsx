@@ -12,7 +12,10 @@ export default function Layout({ children }) {
     <div className="min-h-screen bg-gray-200 flex flex-col">
       {/* Header */}
       <header className="bg-blue-600 text-white p-4 flex justify-between items-center shadow">
-        <h1 className="text-xl font-bold cursor-pointer" onClick={() => navigate("/posts")}>
+        <h1
+          className="text-xl font-bold cursor-pointer"
+          onClick={() => navigate("/posts")}
+        >
           NotePilot
         </h1>
         {localStorage.getItem("token") && (

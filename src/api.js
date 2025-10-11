@@ -29,7 +29,7 @@ api.interceptors.response.use(
             "https://notepilot-backend.onrender.com/api"
           }/refresh`,
           {},
-          { withCredentials: true }
+          { withCredentials: true },
         );
 
         const newToken = res.data.token;
@@ -43,7 +43,7 @@ api.interceptors.response.use(
     }
 
     return Promise.reject(error);
-  }
+  },
 );
 
 export default api;
