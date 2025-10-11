@@ -2,44 +2,71 @@ name: Frontend CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-  build-and-test:
+  setup:
+    name: Setup & Cache
     runs-on: ubuntu-latest
-
+    outputs:
+      cache-hit: ${{ steps.node-cache.outputs.cache-hit }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        id: node-cache
         with:
-          node-version: 20
-          cache: 'npm'
+          path: node_modules
+          key: node-modules-${{ hashFiles('package-lock.json') }}
+          restore-keys: node-modules-
 
       - name: Install dependencies
+        if: steps.node-cache.outputs.cache-hit != 'true'
         run: npm ci
 
-      # ✅ FAIL on lint errors, allow warnings
-      - name: Lint code
-        run: npm run lint --max-warnings=0
+  lint:
+    name: Lint
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm run lint --max-warnings=0
 
-      - name: Build project
-        run: npm run build
+  format:
+    name: Format Check
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm run format:check
 
-      # ✅ FAIL if tests fail
-      - name: Run Vitest
-        run: npm run test -- --run
+  test:
+    name: Unit Tests
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm run test -- --run
         env:
           CI: true
 
-      - name: Upload test summary
-        if: always()
+  build:
+    name: Build
+    needs: [lint, format, test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm run build
+  
+  deploy:
+    name: Deploy to Vercel
+    needs: build  # only run if lint, format, test, build all succeeded
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Trigger Vercel Deployment
         run: |
-          echo "### CI Completed" >> $GITHUB_STEP_SUMMARY
-          echo "- ✅ Build" >> $GITHUB_STEP_SUMMARY
-          echo "- ✅ Lint" >> $GITHUB_STEP_SUMMARY
-          echo "- ✅ Tests" >> $GITHUB_STEP_SUMMARY
+          curl -X POST "${{ secrets.VERCEL_DEPLOY_HOOK }}"
