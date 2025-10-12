@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Wrapper from "./Wrapper";
 
 export default function Layout({ children }) {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ export default function Layout({ children }) {
   return (
     <div className="min-h-screen bg-gray-200 flex flex-col">
       {/* Header */}
-      <header className="bg-blue-600 text-white p-4 flex justify-between items-center shadow">
+      <header className="bg-indigo-600 text-white p-4 flex justify-between items-center shadow">
         <h1
           className="text-xl font-bold cursor-pointer"
           onClick={() => navigate("/posts")}
@@ -27,9 +28,8 @@ export default function Layout({ children }) {
           </button>
         )}
       </header>
-
-      {/* Main content */}
-      <main className="flex-1 p-6">{children}</main>
+      {/* Main Content */}
+      <Wrapper centered={false}><main className="relative p-6 z-10">{children}</main></Wrapper>
     </div>
   );
 }

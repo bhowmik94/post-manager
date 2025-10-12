@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Wrapper from "./Wrapper";
 
 export default function AuthForm({
   title,
   onSubmit,
+  loading,
   includeUsername = false,
   linkText,
   linkTo,
@@ -72,9 +74,12 @@ export default function AuthForm({
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-2xl shadow-md w-full max-w-sm md:max-w-md lg:max-w-lg">
-        <h2 className="text-2xl font-semibold mb-6 text-center">{title}</h2>
+    <Wrapper centered>
+      <div className="bg-white/80 backdrop-blur-lg p-8 rounded-2xl shadow-xl w-full max-w-sm md:max-w-md border border-white/30 z-10">
+        <h1 className="text-3xl font-bold text-center mb-4 text-indigo-600">
+          NotePilot
+        </h1>
+        <p className="text-2xl font-semibold mb-6 text-center">{title}</p>
 
         <form onSubmit={handleSubmit} className="flex flex-col">
           {includeUsername && (
@@ -88,7 +93,7 @@ export default function AuthForm({
                 className={`w-full p-3 border rounded-lg focus:outline-none ${
                   errors.username
                     ? "border-red-500"
-                    : "focus:ring-2 focus:ring-blue-500"
+                    : "focus:ring-2 focus:ring-indigo-500"
                 }`}
                 required
               />
@@ -106,9 +111,7 @@ export default function AuthForm({
               value={form.email}
               onChange={handleChange}
               className={`w-full p-3 border rounded-lg focus:outline-none ${
-                errors.email
-                  ? "border-red-500"
-                  : "focus:ring-2 focus:ring-blue-500"
+                errors.email ? "border-red-500" : "focus:ring-1"
               }`}
               required
             />
@@ -125,9 +128,7 @@ export default function AuthForm({
               value={form.password}
               onChange={handleChange}
               className={`w-full p-3 border rounded-lg focus:outline-none ${
-                errors.password
-                  ? "border-red-500"
-                  : "focus:ring-2 focus:ring-blue-500"
+                errors.password ? "border-red-500" : "focus:ring-1"
               }`}
               required
             />
@@ -139,9 +140,12 @@ export default function AuthForm({
           <button
             type="submit"
             disabled={Object.values(errors).some((e) => e)}
-            className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition disabled:opacity-50"
+            className="w-full bg-indigo-600 text-white p-3 rounded-lg hover:bg-indigo-700 transition disabled:opacity-50"
           >
-            {title}
+            {loading && (
+              <span className="inline-block w-4 h-4 border-2 mx-2 border-current border-t-transparent rounded-full animate-spin"></span>
+            )}
+            {loading ? "Please wait..." : title}
           </button>
         </form>
 
@@ -149,12 +153,12 @@ export default function AuthForm({
           <button
             type="button"
             onClick={() => navigate(linkTo)}
-            className="mt-4 w-full text-sm text-blue-500 hover:underline"
+            className="mt-4 w-full text-sm text-indigo-500 hover:underline"
           >
             {linkText}
           </button>
         )}
       </div>
-    </div>
+    </Wrapper>
   );
 }
