@@ -29,7 +29,9 @@ export default function Layout({ children }) {
         )}
       </header>
       {/* Main Content */}
-      <Wrapper centered={false}><main className="relative p-6 z-10">{children}</main></Wrapper>
+      <Wrapper centered={false}>
+        <main className="relative p-6 z-10">{children}</main>
+      </Wrapper>
     </div>
   );
 }
