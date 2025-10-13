@@ -28,7 +28,7 @@ export default function Posts() {
   const createPost = async (data) => {
     setLoading(true);
     try {
-      // await api.post("/posts", data);
+      await api.post("/posts", data);
       fetchPosts();
     } finally {
       setLoading(false);
