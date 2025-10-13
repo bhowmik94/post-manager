@@ -2,6 +2,7 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: "https://notepilot-backend.onrender.com/api",
+  withCredentials: true,
 });
 
 api.interceptors.request.use((config) => {
@@ -14,7 +15,7 @@ api.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
-
+    console.log(originalRequest);
     // Handle access token expiry (401)
     if (
       error.response &&
@@ -27,7 +28,7 @@ api.interceptors.response.use(
           `${
             import.meta.env.VITE_API_URL ||
             "https://notepilot-backend.onrender.com/api"
-          }/refresh`,
+          }/auth/refresh`,
           {},
           { withCredentials: true },
         );
