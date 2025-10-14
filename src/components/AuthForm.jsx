@@ -76,9 +76,16 @@ export default function AuthForm({
   return (
     <Wrapper centered>
       <div className="bg-white/80 backdrop-blur-lg p-8 rounded-2xl shadow-xl w-full max-w-sm md:max-w-md border border-white/30 z-10">
-        <h1 className="text-3xl font-bold text-center mb-4 text-indigo-600">
-          NotePilot
-        </h1>
+        <div className="relative w-fit mx-auto mb-4">
+          <span
+            onClick={() => navigate("/")}
+            className="relative z-10 text-3xl font-bold text-indigo-600 cursor-pointer transition-transform duration-200 hover:scale-105"
+          >
+            NotePilot
+          </span>
+          <span className="absolute inset-0 rounded-full animate-ping bg-indigo-300/30 -z-0"></span>
+        </div>
+
         <p className="text-2xl font-semibold mb-6 text-center">{title}</p>
 
         <form onSubmit={handleSubmit} className="flex flex-col">
