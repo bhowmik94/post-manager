@@ -32,7 +32,6 @@ export default function Layout({ children }) {
       <Wrapper centered={false}>
         <main className="relative p-6 z-10 2xl:px-64">{children}</main>
       </Wrapper>
-      
     </div>
   );
 }

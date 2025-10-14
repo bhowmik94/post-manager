@@ -87,7 +87,7 @@ export default function Home() {
             {["React", "Node.js", "Express", "MongoDB", "TailwindCSS"].map(
               (tech) => (
                 <Badge key={tech}>{tech}</Badge>
-              )
+              ),
             )}
           </div>
         </Card>
