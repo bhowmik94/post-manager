@@ -23,7 +23,7 @@ export default function Home() {
         </Card>
 
         {/* Features */}
-        <Card className="scale-[1]">
+        <Card>
           <h2 className="text-2xl font-bold text-indigo-600 text-center mb-4">
             Features
           </h2>
@@ -43,7 +43,7 @@ export default function Home() {
         </Card>
 
         {/* Future Plans */}
-        <Card className="scale-[1]">
+        <Card>
           <h2 className="text-2xl font-bold text-indigo-600 text-center mb-4">
             Future Plans
           </h2>
@@ -79,7 +79,7 @@ export default function Home() {
       {/* Bottom Section */}
       <div className="flex flex-col justify-center items-center md:flex-row gap-6 mt-8 mx-auto max-w-5xl">
         {/* Tech Stack */}
-        <Card className="w-full max-w-xs scale-[1]">
+        <Card className="w-full max-w-xs">
           <h2 className="text-xl font-bold text-indigo-600 mb-3 text-center">
             Built With
           </h2>
