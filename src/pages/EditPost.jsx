@@ -36,7 +36,7 @@ export default function EditPost() {
   return (
     <Layout>
       {loading && <Loader />}
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex-center">
         <div className="bg-white p-6 rounded shadow w-full max-w-sm">
           <h2 className="text-xl font-bold mb-4">Edit Post</h2>
           <PostForm onSubmit={updatePost} initialData={postData} />

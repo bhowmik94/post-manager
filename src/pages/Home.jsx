@@ -8,9 +8,9 @@ import { useNavigate } from "react-router-dom";
 export default function Home() {
   const navigate = useNavigate();
   return (
-    <Layout centered={true}>
+    <Layout>
       {/* Main Grid */}
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+      <div className="layout-container w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
         {/* Hero */}
         <Card className="text-center lg:col-span-3 scale-[1] hover:scale-[1.01]">
           <h2 className="text-3xl font-extrabold text-indigo-600 mb-3">
@@ -77,7 +77,7 @@ export default function Home() {
       </div>
 
       {/* Bottom Section */}
-      <div className="flex flex-col justify-center items-center md:flex-row gap-6 mt-8 mx-auto max-w-5xl">
+      <div className="layout-container flex-center flex-col md:flex-row gap-6 mt-8 mx-auto">
         {/* Tech Stack */}
         <Card className="w-full max-w-xs">
           <h2 className="text-xl font-bold text-indigo-600 mb-3 text-center">

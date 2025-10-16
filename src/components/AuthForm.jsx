@@ -79,7 +79,7 @@ export default function AuthForm({
         <div className="relative w-fit mx-auto mb-4">
           <span
             onClick={() => navigate("/")}
-            className="relative z-10 text-3xl font-bold text-indigo-600 cursor-pointer transition-transform duration-200 hover:scale-105"
+            className="relative z-10 text-3xl font-bold text-indigo-600 cursor-pointer transition-transform duration-200"
           >
             NotePilot
           </span>
