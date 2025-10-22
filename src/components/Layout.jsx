@@ -13,7 +13,7 @@ export default function Layout({ children }) {
     <div className="min-h-screen bg-gray-200 flex flex-col">
       {/* Header */}
       <div className="bg-indigo-600 text-white p-4">
-        <header className="layout-container flex justify-between items-center shadow">
+        <header className="layout-container flex justify-between items-center">
           <h1
             className="text-xl font-bold cursor-pointer"
             onClick={() => navigate("/posts")}
