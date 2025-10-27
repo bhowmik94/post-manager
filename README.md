@@ -2,6 +2,8 @@
 
 [![Frontend CI](https://github.com/bhowmik94/post-manager/actions/workflows/frontend-ci.yml/badge.svg)](https://github.com/bhowmik94/post-manager/actions/workflows/frontend-ci.yml)
 
+💡 [Live Demo](https://note-pilot-ui.vercel.app/)
+
 This is the UI of the JWT-authenticated CRUD app called NotePilot, for managing posts/notes.
 This application serves as a playground for testing and learning the best practices while writing frontend codes, including automated tests, CI/CD piplelines etc.
 The frontend is built with React and Vite.  
